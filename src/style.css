@@ -541,8 +541,18 @@ nav ul li a:hover::after {
     }
     .hero-title { font-size: 3.5rem; }
     nav ul { display: none; }
-    header { justify-content: center; }
-    .hero-section { align-items: flex-end; padding: 0 5%; }
+    header {
+        justify-content: center;
+        background: rgba(50, 29, 45, 0.85);
+        backdrop-filter: blur(10px);
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    header.scrolled {
+        background: rgba(255, 255, 255, 0.98);
+    }
+    .hero-section { align-items: flex-end; padding: 0 5%; min-height: 100vh; height: 100svh; overflow: hidden; }
+    #main-site { scroll-padding-top: 80px; }
 
     .feat-row, .feat-row.reverse { flex-direction: column; text-align: center; gap: 3rem; }
     .feat-img img { width: 420px; height: 420px; }

@@ -458,7 +458,8 @@ function initScrollAnimations() {
             const target = document.querySelector(href);
             if (!target) return;
             e.preventDefault();
-            mainSite.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
+            const headerHeight = header.offsetHeight;
+            mainSite.scrollTo({ top: target.offsetTop - headerHeight, behavior: 'smooth' });
         });
     });
 }
