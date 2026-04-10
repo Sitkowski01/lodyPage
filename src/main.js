@@ -445,6 +445,60 @@ function initScrollAnimations() {
         ScrollTrigger.refresh();
     }, 500);
 
+    // Karuzela opinii
+    const carouselGrid = document.querySelector('.opinie-grid');
+    const carouselCards = document.querySelectorAll('.opinie-card');
+    const carouselDots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.carousel-prev');
+    const nextBtn = document.querySelector('.carousel-next');
+    let carouselPage = 0;
+
+    function getPerPage() { return window.innerWidth <= 900 ? 1 : 3; }
+
+    function getTotalPages() { return Math.ceil(carouselCards.length / getPerPage()); }
+
+    const CARD_GAP = 20; // px — matches 1.25rem
+
+    function getPageOffset(page) {
+        const pp = getPerPage();
+        const outerW = carouselGrid.parentElement.offsetWidth;
+        // width of one page worth of cards + their gaps
+        const cardW = (outerW - CARD_GAP * (pp - 1)) / pp;
+        // page n starts after n*pp cards and n*pp gaps (the gap before each new page)
+        return page * (pp * cardW + pp * CARD_GAP);
+    }
+
+    function setupCarousel() {
+        const pp = getPerPage();
+        const outerW = carouselGrid.parentElement.offsetWidth;
+        const cardW = (outerW - CARD_GAP * (pp - 1)) / pp;
+
+        carouselGrid.style.width = '';
+        carouselCards.forEach(card => {
+            card.style.flex = `0 0 ${cardW}px`;
+        });
+
+        carouselPage = Math.min(carouselPage, getTotalPages() - 1);
+        carouselGrid.style.transition = 'none';
+        carouselGrid.style.transform = `translateX(-${getPageOffset(carouselPage)}px)`;
+        requestAnimationFrame(() => { carouselGrid.style.transition = ''; });
+        carouselDots.forEach((d, i) => d.classList.toggle('dot-active', i === carouselPage));
+    }
+
+    function goToPage(page) {
+        const total = getTotalPages();
+        carouselPage = (page + total) % total;
+        carouselGrid.style.transform = `translateX(-${getPageOffset(carouselPage)}px)`;
+        carouselDots.forEach((d, i) => d.classList.toggle('dot-active', i === carouselPage));
+    }
+
+    setupCarousel();
+    window.addEventListener('resize', setupCarousel);
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goToPage(carouselPage - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToPage(carouselPage + 1));
+    carouselDots.forEach((dot, i) => dot.addEventListener('click', () => goToPage(i)));
+
     // Na mobile ustaw padding hero równy dokładnej wysokości headera
     if (window.innerWidth <= 900) {
         const heroSection = document.querySelector('.hero-section');
@@ -468,4 +522,38 @@ function initScrollAnimations() {
             mainSite.scrollTo({ top: target.offsetTop - headerHeight, behavior: 'smooth' });
         });
     });
+
+    // Inicjalizacja mapy Leaflet
+    const mapContainer = document.getElementById('map');
+    if (mapContainer && typeof L !== 'undefined') {
+        const map = L.map('map', {
+            zoomControl: false,
+            scrollWheelZoom: false
+        }).setView([52.22977, 21.01093], 15);
+
+        // Dodanie kafelków OpenStreetMap / Carto (jasny motyw pasujący do designu)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors'
+        }).addTo(map);
+
+        // Customowy marker (ikona jako HTML)
+        const customIcon = L.divIcon({
+            className: 'custom-leaflet-marker',
+            html: `
+                <div class="map-marker">
+                    <div class="map-marker-pin">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 3C9.24 3 7 5.24 7 8c0 3.75 5 10 5 10s5-6.25 5-10c0-2.76-2.24-5-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="map-marker-label">ul. Słodka 12<br><span>00-001 Warszawa</span></div>
+                </div>
+            `,
+            iconSize: [120, 120], // Rozmiar kontenera markera
+            iconAnchor: [60, 95] // Punkt, z którym marker jest powiązany z koordynatami (środek w poziomie, dół w pionie, offset dla pina)
+        });
+
+        L.marker([52.22977, 21.01093], { icon: customIcon }).addTo(map);
+    }
 }
+
