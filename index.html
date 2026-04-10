@@ -11,8 +11,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
 <body>
 
@@ -33,7 +31,7 @@
                 <ul>
                     <li><a href="#smaki">Kolekcja</a></li>
                     <li><a href="#featured">O Nas</a></li>
-                    <li><a href="#kontakt-info">Kontakt</a></li>
+                    <li><a href="#footer-cta">Kontakt</a></li>
                 </ul>
             </nav>
         </header>
@@ -196,239 +194,30 @@
         </section>
 
 
-        <!-- SEKCJA OPINIE -->
-        <section id="opinie">
-            <div class="opinie-container">
-                <div class="opinie-header gsap-reveal">
-                    <span class="opinie-subtitle">Co mówią nasi goście</span>
-                    <h2 class="opinie-title">Opinie Klientów</h2>
+        <!-- FOOTER / CTA -->
+        <section id="footer-cta">
+            <div class="gsap-reveal" style="position: relative; z-index: 2;">
+                <span class="section-subtitle" style="color: var(--text-light);">Gotowy na degustację?</span>
+                <h2 class="section-title" style="font-size: 4.5rem; margin-bottom: 2rem;">Wzbogać Swój Dzień.</h2>
+                <button class="btn" style="padding: 1.2rem 4rem; font-size: 1rem;">Skontaktuj się</button>
+            </div>
+
+            <div class="footer-info gsap-reveal">
+                <div>
+                    <strong>📍 2000</strong><br>
+                    Słonecznych Dni<br>Radości
                 </div>
-                <div class="opinie-carousel-wrap">
-                <button class="carousel-btn carousel-prev" aria-label="Poprzedni">&#8592;</button>
-                <div class="opinie-grid-outer">
-                <div class="opinie-grid">
-                    <!-- Karta 1 -->
-                    <div class="opinie-card">
-                        <div class="opinie-card-top">
-                            <div class="opinie-author">
-                                <div class="opinie-avatar"><img src="https://i.pravatar.cc/150?img=47" alt="Klientka"></div>
-                                <div>
-                                    <h3 class="opinie-name">Anna Kowalska</h3>
-                                    <p class="opinie-role">Stała klientka</p>
-                                    <div class="opinie-stars">
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="opinie-quote-icon"><svg viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                        </div>
-                        <p class="opinie-text">Najlepsze lody w mieście! Kremowa wanilia w rożku to absolutny hit — wracam tu co tydzień. Obsługa zawsze uśmiechnięta i profesjonalna.</p>
-                        <img src="https://cdn-icons-png.flaticon.com/512/3181/3181463.png" alt="Lody" class="opinie-deco">
-                    </div>
-                    <!-- Karta 2 -->
-                    <div class="opinie-card">
-                        <div class="opinie-card-top">
-                            <div class="opinie-author">
-                                <div class="opinie-avatar"><img src="https://i.pravatar.cc/150?img=11" alt="Klient"></div>
-                                <div>
-                                    <h3 class="opinie-name">Marek Wiśniewski</h3>
-                                    <p class="opinie-role">Miłośnik deserów</p>
-                                    <div class="opinie-stars">
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="opinie-quote-icon"><svg viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                        </div>
-                        <p class="opinie-text">Czekoladowe S'mores to poezja dla podniebienia. Jakość składników czuć w każdym kęsie — to nie jest zwykła lodziarnia, to prawdziwe rzemiosło.</p>
-                        <img src="/icon1.svg" alt="Lody" class="opinie-deco">
-                    </div>
-                    <!-- Karta 3 -->
-                    <div class="opinie-card">
-                        <div class="opinie-card-top">
-                            <div class="opinie-author">
-                                <div class="opinie-avatar"><img src="https://i.pravatar.cc/150?img=32" alt="Klientka"></div>
-                                <div>
-                                    <h3 class="opinie-name">Zofia Nowak</h3>
-                                    <p class="opinie-role">Blogerka kulinarna</p>
-                                    <div class="opinie-stars">
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="opinie-quote-icon"><svg viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                        </div>
-                        <p class="opinie-text">Mango & Wanilia to odkrycie roku! Niesamowita świeżość, piękna prezentacja. Polecam każdemu kto szuka czegoś wyjątkowego.</p>
-                        <img src="/icon2.svg" alt="Lody" class="opinie-deco">
-                    </div>
-                    <!-- Karta 4 -->
-                    <div class="opinie-card">
-                        <div class="opinie-card-top">
-                            <div class="opinie-author">
-                                <div class="opinie-avatar"><img src="https://i.pravatar.cc/150?img=5" alt="Klient"></div>
-                                <div>
-                                    <h3 class="opinie-name">Tomasz Jabłoński</h3>
-                                    <p class="opinie-role">Regularny gość</p>
-                                    <div class="opinie-stars">
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="opinie-quote-icon"><svg viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                        </div>
-                        <p class="opinie-text">Włoskie gelato na najwyższym poziomie. Pistacjowe i malinowe to mój duet marzeń. Wyjątkowe miejsce, które tętni życiem każdego lata.</p>
-                        <img src="/icon3.svg" alt="Lody" class="opinie-deco">
-                    </div>
-                    <!-- Karta 5 -->
-                    <div class="opinie-card">
-                        <div class="opinie-card-top">
-                            <div class="opinie-author">
-                                <div class="opinie-avatar"><img src="https://i.pravatar.cc/150?img=20" alt="Klientka"></div>
-                                <div>
-                                    <h3 class="opinie-name">Karolina Dąbrowska</h3>
-                                    <p class="opinie-role">Mama czworga dzieci</p>
-                                    <div class="opinie-stars">
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="opinie-quote-icon"><svg viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                        </div>
-                        <p class="opinie-text">Dzieci szaleją na tym miejscu! Różnorodność smaków niesamowita, a obsługa zawsze cierpliwa i serdeczna. Stałe miejsce naszych rodzinnych niedziel.</p>
-                        <img src="/icon4.svg" alt="Lody" class="opinie-deco">
-                    </div>
-                    <!-- Karta 6 -->
-                    <div class="opinie-card">
-                        <div class="opinie-card-top">
-                            <div class="opinie-author">
-                                <div class="opinie-avatar"><img src="https://i.pravatar.cc/150?img=60" alt="Klient"></div>
-                                <div>
-                                    <h3 class="opinie-name">Piotr Lewandowski</h3>
-                                    <p class="opinie-role">Koneser słodkości</p>
-                                    <div class="opinie-stars">
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                        <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="opinie-quote-icon"><svg viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
-                        </div>
-                        <p class="opinie-text">Lody tiramisu to absolutne dzieło sztuki. Smak autentyczny jak we Włoszech. Atmosfera lokalu jest niepowtarzalna — czuć tu miłość do rzemiosła.</p>
-                        <img src="/icon5.svg" alt="Lody" class="opinie-deco">
-                    </div>
+                <div>
+                    <strong>🏪 500</strong><br>
+                    Zadowolonych<br>Cukierni
                 </div>
-                </div>
-                <button class="carousel-btn carousel-next" aria-label="Następny">&#8594;</button>
-                </div>
-                <div class="opinie-dots">
-                    <div class="dot dot-active"></div>
-                    <div class="dot"></div>
+                <div>
+                    <strong>✉️ Kontakt</strong><br>
+                    hello@lartisan.pl<br>
+                    +48 123 456 789
                 </div>
             </div>
         </section>
-
-        <!-- SEKCJA KONTAKT FORMULARZ -->
-        <section id="kontakt-info">
-            <div class="kontakt-container">
-                <!-- Nagłówek -->
-                <div class="kontakt-header gsap-reveal">
-                    <span class="opinie-subtitle">Bądźmy w kontakcie</span>
-                    <h2 class="opinie-title">Znajdź nas</h2>
-                </div>
-                <!-- Kafelki -->
-                <div class="kontakt-tiles gsap-reveal">
-                    <div class="kontakt-tile tile-yellow">
-                        <div class="tile-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#30425c" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.22 2.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.72 6.72l1.28-1.28a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="tile-title">Zadzwoń do nas 24/7</h3>
-                            <p class="tile-text">+48 123 456 789</p>
-                        </div>
-                    </div>
-                    <div class="kontakt-tile tile-red">
-                        <div class="tile-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#30425c" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="tile-title">Znajdź nas</h3>
-                            <p class="tile-text">ul. Słodka 12,<br>00-001 Warszawa</p>
-                        </div>
-                    </div>
-                    <div class="kontakt-tile tile-purple">
-                        <div class="tile-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="#30425c" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                        </div>
-                        <div>
-                            <h3 class="tile-title">Godziny otwarcia</h3>
-                            <p class="tile-text">Codziennie 11:00 – 23:00</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Formularz + Mapa -->
-                <div class="kontakt-bottom gsap-reveal">
-                    <div class="kontakt-form-wrap">
-                        <h3 class="kontakt-form-title">Napisz do nas</h3>
-                        <form class="kontakt-form">
-                            <div class="form-row">
-                                <input type="text" placeholder="Imię">
-                                <input type="text" placeholder="Nazwisko">
-                            </div>
-                            <div class="form-row">
-                                <input type="email" placeholder="E-mail">
-                                <input type="tel" placeholder="Telefon">
-                            </div>
-                            <textarea rows="4" placeholder="Wpisz swoją wiadomość"></textarea>
-                            <button type="submit" class="form-btn">Wyślij teraz</button>
-                        </form>
-                    </div>
-                    <div class="kontakt-map" id="map"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer id="footer-cta">
-            <div class="footer-inner">
-                <div class="footer-logo">L'Artisan</div>
-                <p class="footer-tagline">Rzemieślnicze lody włoskie kręcone codziennie ze świeżych składników.</p>
-                <nav class="footer-nav">
-                    <a href="#smaki">Kolekcja</a>
-                    <a href="#featured">O Nas</a>
-                    <a href="#opinie">Opinie</a>
-                    <a href="#kontakt-info">Kontakt</a>
-                </nav>
-                <div class="footer-bottom">
-                    <span>hello@lartisan.pl</span>
-                    <span>+48 123 456 789</span>
-                    <span>ul. Słodka 12, Warszawa</span>
-                </div>
-                <p class="footer-copy">© 2025 L'Artisan. Wszelkie prawa zastrzeżone.</p>
-            </div>
-        </footer>
     </main>
 
     <script type="module" src="/src/main.js"></script>
