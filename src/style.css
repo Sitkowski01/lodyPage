@@ -637,7 +637,6 @@ nav ul li a:hover::after {
     border-radius: 50%;
     width: 44px;
     height: 44px;
-    font-size: 1.1rem;
     color: var(--primary-color);
     cursor: pointer;
     flex-shrink: 0;
@@ -647,7 +646,12 @@ nav ul li a:hover::after {
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(74,43,60,0.08);
     padding: 0;
-    line-height: 0;
+}
+
+.carousel-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
 }
 
 .carousel-btn:hover {
