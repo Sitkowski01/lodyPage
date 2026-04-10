@@ -968,7 +968,7 @@ nav ul li a:hover::after {
 
 /* Responsive nowych sekcji */
 @media (max-width: 900px) {
-    .opinie-carousel-wrap { margin: 0 -2.5rem; gap: 1rem; }
+    .opinie-carousel-wrap { margin: 0; gap: 0.5rem; }
     .opinie-title { font-size: 2.5rem; }
     .kontakt-tiles { grid-template-columns: 1fr; }
     .kontakt-bottom { grid-template-columns: 1fr; }
