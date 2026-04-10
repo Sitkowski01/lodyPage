@@ -448,12 +448,17 @@ function initScrollAnimations() {
     // Karuzela opinii
     const carouselGrid = document.querySelector('.opinie-grid');
     const carouselCards = document.querySelectorAll('.opinie-card');
-    const carouselDots = document.querySelectorAll('.dot');
+    const dotsContainer = document.querySelector('.opinie-dots');
     const prevBtn = document.querySelector('.carousel-prev');
     const nextBtn = document.querySelector('.carousel-next');
     let carouselPage = 0;
+    let carouselDots = [];
 
-    function getPerPage() { return window.innerWidth <= 900 ? 1 : 3; }
+    function getPerPage() { 
+        if (window.innerWidth <= 600) return 1;
+        if (window.innerWidth <= 900) return 2;
+        return 3; 
+    }
 
     function getTotalPages() { return Math.ceil(carouselCards.length / getPerPage()); }
 
@@ -462,10 +467,22 @@ function initScrollAnimations() {
     function getPageOffset(page) {
         const pp = getPerPage();
         const outerW = carouselGrid.parentElement.offsetWidth;
-        // width of one page worth of cards + their gaps
         const cardW = (outerW - CARD_GAP * (pp - 1)) / pp;
-        // page n starts after n*pp cards and n*pp gaps (the gap before each new page)
         return page * (pp * cardW + pp * CARD_GAP);
+    }
+
+    function renderDots() {
+        if (!dotsContainer) return;
+        const total = getTotalPages();
+        dotsContainer.innerHTML = '';
+        carouselDots = [];
+        for (let i = 0; i < total; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'dot' + (i === carouselPage ? ' dot-active' : '');
+            dot.addEventListener('click', () => goToPage(i));
+            dotsContainer.appendChild(dot);
+            carouselDots.push(dot);
+        }
     }
 
     function setupCarousel() {
@@ -479,14 +496,18 @@ function initScrollAnimations() {
         });
 
         carouselPage = Math.min(carouselPage, getTotalPages() - 1);
+        if (carouselPage < 0) carouselPage = 0;
+
+        renderDots();
+
         carouselGrid.style.transition = 'none';
         carouselGrid.style.transform = `translateX(-${getPageOffset(carouselPage)}px)`;
         requestAnimationFrame(() => { carouselGrid.style.transition = ''; });
-        carouselDots.forEach((d, i) => d.classList.toggle('dot-active', i === carouselPage));
     }
 
     function goToPage(page) {
         const total = getTotalPages();
+        if (total === 0) return;
         carouselPage = (page + total) % total;
         carouselGrid.style.transform = `translateX(-${getPageOffset(carouselPage)}px)`;
         carouselDots.forEach((d, i) => d.classList.toggle('dot-active', i === carouselPage));
@@ -497,7 +518,6 @@ function initScrollAnimations() {
 
     if (prevBtn) prevBtn.addEventListener('click', () => goToPage(carouselPage - 1));
     if (nextBtn) nextBtn.addEventListener('click', () => goToPage(carouselPage + 1));
-    carouselDots.forEach((dot, i) => dot.addEventListener('click', () => goToPage(i)));
 
     // Na mobile ustaw padding hero równy dokładnej wysokości headera
     if (window.innerWidth <= 900) {
