@@ -646,6 +646,8 @@ nav ul li a:hover::after {
     justify-content: center;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(74,43,60,0.08);
+    padding: 0;
+    line-height: 0;
 }
 
 .carousel-btn:hover {
@@ -990,7 +992,7 @@ nav ul li a:hover::after {
 
 @media (max-width: 500px) {
     .form-row { grid-template-columns: 1fr; }
-    .opinie-text { padding-right: 5rem; }
+    .opinie-text { padding-right: 0; padding-bottom: 4rem; }
     .opinie-title { font-size: 2rem; }
 }
 

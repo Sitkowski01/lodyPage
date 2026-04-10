@@ -56,7 +56,7 @@ camera.position.set(0, 1.5, 14);
 
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setPixelRatio(window.innerWidth <= 900 ? 1 : Math.min(window.devicePixelRatio, 2));
 renderer.physicallyCorrectLights = true;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.1;
@@ -274,11 +274,13 @@ let mouseY = 0;
 let targetX = 0;
 let targetY = 0;
 let isLoaded = false;
+let render3D = true;
 
 let camTarget = { x: 0, lookX: 0, z: 14 };
 
 function animate() {
     requestAnimationFrame(animate);
+    if (!render3D) return;
 
     targetX = mouseX * 0.8;
     targetY = mouseY * 0.8;
@@ -393,6 +395,7 @@ function triggerWebsiteTransition() {
         onComplete: () => {
             if (!isDesktop) {
                 document.querySelector('#webgl-canvas').style.display = 'none';
+                render3D = false;
             }
         }
     }, "-=0.6");
