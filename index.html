@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Artisan | Kolekcja Smaków</title>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍦</text></svg>">
+
+    <!-- Czcionki Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="ambient-glow"></div>
+
+    <div id="loader-ui">
+        <div class="loader-text">Przygotowywanie...</div>
+    </div>
+
+    <!-- MAIN SITE SCROLLER -->
+    <main id="main-site">
+
+        <canvas id="webgl-canvas"></canvas>
+
+        <header id="navbar">
+            <div class="logo">L'Artisan</div>
+            <nav>
+                <ul>
+                    <li><a href="#smaki">Kolekcja</a></li>
+                    <li><a href="#featured">O Nas</a></li>
+                    <li><a href="#footer-cta">Kontakt</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <span class="hero-subtitle">Kolekcja Autorska</span>
+                <h1 class="hero-title">Aksamitne <br><i>Lody Włoskie.</i></h1>
+                <p class="hero-desc">Kręcone codziennie ze świeżych ziaren wanilii z Tahiti i ekologicznej śmietanki. Mistrzostwo tekstury podawane w ręcznie wypiekanych, chrupiących rożkach.</p>
+                <a href="#smaki" class="btn">Odkryj Menu</a>
+            </div>
+        </section>
+
+        <!-- NOWA SEKCJA SMAKÓW -->
+        <section id="smaki">
+            <div class="flavors-intro gsap-reveal">
+                <span class="section-subtitle">Nasze Autorskie Kompozycje</span>
+                <h2 class="section-title-main">Kolekcja Smaków</h2>
+                <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">Z dumą prezentujemy smaki, które definiują naszą cukiernię. Klasyka połączona z nowoczesnym, rzemieślniczym podejściem.</p>
+            </div>
+
+            <div class="flavor-grid">
+                <!-- Karta 1 -->
+                <div class="flavor-card gsap-reveal">
+                    <div class="flavor-img">
+                        <img src="https://images.pexels.com/photos/8589559/pexels-photo-8589559.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Słony Karmel i Ciastko">
+                    </div>
+                    <div class="flavor-info">
+                        <div>
+                            <h3 class="flavor-title">Karmel & Ciastko</h3>
+                            <p class="flavor-desc">Kruche, maślane ciasteczka zanurzone w gęstym kremie z solonego karmelu i mascarpone.</p>
+                        </div>
+                        <p class="flavor-meta">150g • 120 kcal</p>
+                    </div>
+                </div>
+
+                <!-- Karta 2 -->
+                <div class="flavor-card gsap-reveal">
+                    <div class="flavor-img">
+                        <img src="https://images.pexels.com/photos/6431585/pexels-photo-6431585.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Intensywna Malina">
+                    </div>
+                    <div class="flavor-info">
+                        <div>
+                            <h3 class="flavor-title">Intensywna Malina</h3>
+                            <p class="flavor-desc">Orzeźwiający sorbet z malin leśnych przełamany odrobiną chrupiącej białej czekolady.</p>
+                        </div>
+                        <p class="flavor-meta">150g • 95 kcal</p>
+                    </div>
+                </div>
+
+                <!-- Karta 3 -->
+                <div class="flavor-card gsap-reveal">
+                    <div class="flavor-img">
+                        <img src="https://images.pexels.com/photos/29851684/pexels-photo-29851684.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mięta z Czekoladą">
+                    </div>
+                    <div class="flavor-info">
+                        <div>
+                            <h3 class="flavor-title">Mięta z Czekoladą</h3>
+                            <p class="flavor-desc">Świeże liście mięty tworzą idealną harmonię z kawałkami belgijskiej gorzkiej czekolady.</p>
+                        </div>
+                        <p class="flavor-meta">150g • 110 kcal</p>
+                    </div>
+                </div>
+
+                <!-- Karta 4 -->
+                <div class="flavor-card gsap-reveal">
+                    <div class="flavor-img">
+                        <img src="https://images.pexels.com/photos/28525188/pexels-photo-28525188.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mango i Wanilia">
+                    </div>
+                    <div class="flavor-info">
+                        <div>
+                            <h3 class="flavor-title">Mango & Wanilia</h3>
+                            <p class="flavor-desc">Egzotyczny mus z dojrzałego mango Alfonso, podawany na aksamitnej bazie waniliowej.</p>
+                        </div>
+                        <p class="flavor-meta">150g • 105 kcal</p>
+                    </div>
+                </div>
+
+                <!-- Karta 5 -->
+                <div class="flavor-card gsap-reveal">
+                    <div class="flavor-img">
+                        <img src="https://images.pexels.com/photos/8733988/pexels-photo-8733988.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Prażony Orzech">
+                    </div>
+                    <div class="flavor-info">
+                        <div>
+                            <h3 class="flavor-title">Prażony Orzech</h3>
+                            <p class="flavor-desc">Krem z wyselekcjonowanych orzechów laskowych z Piemontu, poddanych długiemu prażeniu.</p>
+                        </div>
+                        <p class="flavor-meta">150g • 130 kcal</p>
+                    </div>
+                </div>
+
+                <!-- Karta 6 -->
+                <div class="flavor-card gsap-reveal">
+                    <div class="flavor-img">
+                        <img src="https://images.pexels.com/photos/5060379/pexels-photo-5060379.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Śnieżny Kokos">
+                    </div>
+                    <div class="flavor-info">
+                        <div>
+                            <h3 class="flavor-title">Śnieżny Kokos</h3>
+                            <p class="flavor-desc">Tropikalna podróż smaków: śmietanka kokosowa, mleko migdałowe i wiórki ze świeżego kokosa.</p>
+                        </div>
+                        <p class="flavor-meta">150g • 115 kcal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED ITEMS SECTION -->
+        <section id="featured">
+            <div class="feat-intro gsap-reveal">
+                <span class="section-subtitle">O Naszych Składnikach</span>
+                <h2 class="section-title">Jakość i Pasja<br>w każdym detalu</h2>
+            </div>
+
+            <!-- ROW 1 -->
+            <div class="feat-row gsap-reveal">
+                <div class="feat-text">
+                    <h3 class="feat-title">Klasyczna Wanilia<br>w Rożku</h3>
+                    <div class="ingredients-box">
+                        <strong>Składniki:</strong>
+                        <span>🥛 Śmietanka</span>
+                        <span>🍦 Mleko</span>
+                        <span>🌿 Wanilia</span>
+                    </div>
+                    <p class="feat-desc">W upalne, słoneczne dni nie ma nic lepszego niż puszysta, zimna chmurka z prawdziwej śmietanki. Ekstrakt z lasek wanilii Bourbon nadaje jej niepowtarzalny, głęboki aromat. Idealny wybór dla purystów smaku.</p>
+                    <div class="feat-meta">
+                        <span class="feat-price">25,00 zł</span>
+                        <span class="feat-rating"><i>★</i> 5.0 Ocena</span>
+                        <button class="btn">Zamów Teraz</button>
+                    </div>
+                </div>
+                <div class="feat-img">
+                    <img src="https://images.pexels.com/photos/13804828/pexels-photo-13804828.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Klasyczne lody waniliowe">
+                </div>
+            </div>
+
+            <!-- ROW 2 -->
+            <div class="feat-row reverse gsap-reveal">
+                <div class="feat-text">
+                    <h3 class="feat-title">Rdzeń z Ciemnej<br>Czekolady S'mores</h3>
+                    <div class="ingredients-box">
+                        <strong>Składniki:</strong>
+                        <span>🍓 Owoce</span>
+                        <span>🥛 Śmietanka</span>
+                        <span>🍫 Kakao 70%</span>
+                    </div>
+                    <p class="feat-desc">Zanurz się w ekstremalnie gęstym, kakaowym doznaniu. Wykorzystujemy najwyższej jakości belgijską czekoladę stopioną ze świeżą śmietanką. To deser, który definiuje pojęcie letniej, słodkiej rozpusty.</p>
+                    <div class="feat-meta">
+                        <span class="feat-price">32,50 zł</span>
+                        <span class="feat-rating"><i>★</i> 4.9 Ocena</span>
+                        <button class="btn">Zamów Teraz</button>
+                    </div>
+                </div>
+                <div class="feat-img">
+                    <img src="https://images.pexels.com/photos/35141895/pexels-photo-35141895.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Lody czekoladowe">
+                </div>
+            </div>
+        </section>
+
+
+        <!-- FOOTER / CTA -->
+        <section id="footer-cta">
+            <div class="gsap-reveal" style="position: relative; z-index: 2;">
+                <span class="section-subtitle" style="color: var(--text-light);">Gotowy na degustację?</span>
+                <h2 class="section-title" style="font-size: 4.5rem; margin-bottom: 2rem;">Wzbogać Swój Dzień.</h2>
+                <button class="btn" style="padding: 1.2rem 4rem; font-size: 1rem;">Skontaktuj się</button>
+            </div>
+
+            <div class="footer-info gsap-reveal">
+                <div>
+                    <strong>📍 2000</strong><br>
+                    Słonecznych Dni<br>Radości
+                </div>
+                <div>
+                    <strong>🏪 500</strong><br>
+                    Zadowolonych<br>Cukierni
+                </div>
+                <div>
+                    <strong>✉️ Kontakt</strong><br>
+                    hello@lartisan.pl<br>
+                    +48 123 456 789
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

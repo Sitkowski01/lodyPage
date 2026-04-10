@@ -1,0 +1,559 @@
+:root {
+    /* Głęboki, elegancki motyw Hero */
+    --bg-hero: linear-gradient(135deg, #321d2d 0%, #160c14 100%);
+
+    /* Pastelowe akcenty nawiązujące do śliwki z Hero */
+    --bg-pastel: #f4eef0;
+    --cream: #fffcf5;
+    --white: #ffffff;
+
+    /* Kolory przewodnie */
+    --primary-color: #4a2b3c; /* Głęboka śliwka */
+    --gold: #d5b07c; /* Szampańskie, zgaszone złoto */
+
+    /* Typografia */
+    --text-dark: #33282c;
+    --text-light: #7a6b72;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg-hero);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+}
+
+/* --- TŁO OTOCZENIA (Dla sekcji Hero) --- */
+.ambient-glow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 80vw;
+    background: radial-gradient(circle, rgba(213, 176, 124, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* --- UI ŁADOWANIA --- */
+#loader-ui {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 8vh;
+    pointer-events: none;
+}
+
+.loader-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+/* --- GŁÓWNA STRONA (Kontener Przewijania) --- */
+#main-site {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 20;
+    overflow-y: auto;
+    overflow-x: hidden;
+    pointer-events: none;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+#main-site::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- PŁÓTNO 3D --- */
+#webgl-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --- NAVBAR --- */
+header {
+    position: fixed;
+    width: 100%;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(-20px);
+    z-index: 100;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s ease;
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 1rem 5%;
+    box-shadow: 0 4px 30px rgba(74, 43, 60, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    color: var(--cream);
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.4s ease;
+    cursor: pointer;
+}
+
+header.scrolled .logo {
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 3.5rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--cream);
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+    position: relative;
+    padding-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+header.scrolled nav ul li a {
+    color: var(--primary-color);
+}
+
+nav ul li a:hover, header.scrolled nav ul li a:hover {
+    color: var(--gold);
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--cream);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(-50%);
+}
+
+header.scrolled nav ul li a::after {
+    background: var(--gold);
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* --- SEKCJA HERO --- */
+.hero-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 500px;
+    opacity: 0;
+    will-change: transform, opacity;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5.5rem;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.hero-title i {
+    color: var(--gold);
+    font-style: normal;
+}
+
+.hero-desc {
+    font-size: 1.1rem;
+    color: rgba(255, 252, 245, 0.7);
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    font-weight: 400;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 10px 20px rgba(74, 43, 60, 0.2);
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    transform: skewX(-20deg);
+    transition: 0s;
+}
+
+.btn:hover {
+    background-color: #321d2d;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(74, 43, 60, 0.4);
+}
+
+.btn:hover::before {
+    left: 150%;
+    transition: left 0.6s ease;
+}
+
+/* --- NOWA SEKCJA SMAKÓW --- */
+#smaki {
+    position: relative;
+    background: var(--bg-pastel);
+    padding: 8rem 0;
+    z-index: 20;
+}
+
+.flavors-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding: 0 5%;
+}
+
+.section-title-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.flavor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.flavor-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(74, 43, 60, 0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.flavor-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(74, 43, 60, 0.12);
+}
+
+.flavor-img {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+}
+
+.flavor-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.flavor-card:hover .flavor-img img {
+    transform: scale(1.08);
+}
+
+.flavor-info {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.flavor-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.flavor-desc {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.flavor-meta {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+/* --- SEKCJA FEATURED ITEMS (Jakość i Pasja) --- */
+#featured {
+    background-color: var(--white);
+    color: var(--text-dark);
+    padding: 8rem 10%;
+    position: relative;
+}
+
+.feat-intro {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.section-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.feat-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5rem;
+    margin-bottom: 8rem;
+}
+
+.feat-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.feat-text {
+    flex: 1;
+    max-width: 500px;
+}
+
+.feat-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.ingredients-box {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.ingredients-box span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.feat-desc {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+
+.feat-meta {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.feat-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--gold);
+}
+
+.feat-rating {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+.feat-rating i { color: var(--gold); font-style: normal; }
+
+.feat-img {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feat-img img {
+    width: 420px;
+    height: 420px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    box-shadow: 0 30px 60px rgba(74, 43, 60, 0.15);
+    animation: morph-img 8s ease-in-out infinite alternate;
+    object-fit: cover;
+    background-color: var(--bg-pastel);
+    display: block;
+    flex-shrink: 0;
+}
+
+@keyframes morph-img {
+    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    100% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+}
+
+/* --- FOOTER / CTA --- */
+#footer-cta {
+    background: linear-gradient(to bottom, var(--white) 0%, var(--bg-pastel) 100%);
+    color: var(--primary-color);
+    padding: 5rem 10% 5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 6rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+/* Klasa GSAP zabezpieczająca przed miganiem elementów na starcie */
+.gsap-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+@media (max-width: 900px) {
+    .hero-content {
+        text-align: center;
+        margin: 0 auto;
+        max-width: 100%;
+        z-index: 30;
+        background: rgba(42, 27, 45, 0.6);
+        backdrop-filter: blur(10px);
+        padding: 2rem;
+        margin-top: auto;
+        margin-bottom: 2rem;
+        border-radius: 20px;
+    }
+    .hero-title { font-size: 3.5rem; }
+    nav ul { display: none; }
+    header { justify-content: center; }
+    .hero-section { align-items: flex-end; padding: 0 5%; }
+
+    .feat-row, .feat-row.reverse { flex-direction: column; text-align: center; gap: 3rem; }
+    .feat-img img { width: 420px; height: 420px; }
+    .ingredients-box { justify-content: center; flex-wrap: wrap; }
+    .feat-meta { flex-direction: column; gap: 1rem; }
+    .section-title { font-size: 2.8rem; }
+    .section-title-main { font-size: 3rem; }
+    .footer-info { flex-direction: column; gap: 2rem; }
+}
+
+@media (max-width: 500px) {
+    .feat-img img { width: 280px; height: 280px; }
+    .hero-title { font-size: 2.8rem; }
+}
