@@ -910,12 +910,27 @@ nav ul li a:hover::after {
     box-shadow: 0 10px 30px rgba(74,43,60,0.08);
     min-height: 350px;
     position: relative;
-    z-index: 1; /* z-index dla leaflet, zeby nie wchodzil na header */
 }
 
-.custom-leaflet-marker {
-    background: transparent;
-    border: none;
+.kontakt-map iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Custom marker overlay — sits on top of iframe, pointer-events: none so map stays interactive */
+.map-marker-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+    /* shift slightly above center so pin tip lands on the actual location */
+    padding-bottom: 60px;
 }
 
 .map-marker {
@@ -923,7 +938,6 @@ nav ul li a:hover::after {
     flex-direction: column;
     align-items: center;
     filter: drop-shadow(0 8px 20px rgba(42,27,45,0.35));
-    width: 100%;
 }
 
 .map-marker-pin {

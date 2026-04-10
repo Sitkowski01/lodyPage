@@ -522,38 +522,5 @@ function initScrollAnimations() {
             mainSite.scrollTo({ top: target.offsetTop - headerHeight, behavior: 'smooth' });
         });
     });
-
-    // Inicjalizacja mapy Leaflet
-    const mapContainer = document.getElementById('map');
-    if (mapContainer && typeof L !== 'undefined') {
-        const map = L.map('map', {
-            zoomControl: false,
-            scrollWheelZoom: false
-        }).setView([52.22977, 21.01093], 15);
-
-        // Dodanie kafelków OpenStreetMap / Carto (jasny motyw pasujący do designu)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors'
-        }).addTo(map);
-
-        // Customowy marker (ikona jako HTML)
-        const customIcon = L.divIcon({
-            className: 'custom-leaflet-marker',
-            html: `
-                <div class="map-marker">
-                    <div class="map-marker-pin">
-                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 3C9.24 3 7 5.24 7 8c0 3.75 5 10 5 10s5-6.25 5-10c0-2.76-2.24-5-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill="white"/>
-                        </svg>
-                    </div>
-                    <div class="map-marker-label">ul. Słodka 12<br><span>00-001 Warszawa</span></div>
-                </div>
-            `,
-            iconSize: [120, 120], // Rozmiar kontenera markera
-            iconAnchor: [60, 95] // Punkt, z którym marker jest powiązany z koordynatami (środek w poziomie, dół w pionie, offset dla pina)
-        });
-
-        L.marker([52.22977, 21.01093], { icon: customIcon }).addTo(map);
-    }
 }
 
