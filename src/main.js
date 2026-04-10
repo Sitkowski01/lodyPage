@@ -448,7 +448,7 @@ function initScrollAnimations() {
     // Na mobile ustaw padding hero równy dokładnej wysokości headera
     if (window.innerWidth <= 900) {
         const heroSection = document.querySelector('.hero-section');
-        heroSection.style.paddingTop = header.offsetHeight + 'px';
+        heroSection.style.paddingTop = (header.offsetHeight + 12) + 'px';
     }
 
     // Logo — powrót do góry

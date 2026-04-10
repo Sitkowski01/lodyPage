@@ -527,18 +527,6 @@ nav ul li a:hover::after {
 }
 
 @media (max-width: 900px) {
-    .hero-content {
-        text-align: center;
-        margin: 0 auto;
-        max-width: 100%;
-        z-index: 30;
-        background: rgba(42, 27, 45, 0.6);
-        backdrop-filter: blur(10px);
-        padding: 2rem;
-        margin-top: auto;
-        margin-bottom: 2rem;
-        border-radius: 20px;
-    }
     nav ul { display: none; }
     header {
         justify-content: center;
@@ -554,22 +542,29 @@ nav ul li a:hover::after {
     }
     header .logo { font-size: 1.6rem; }
     .hero-section {
-        align-items: flex-start;
-        padding: 0 5% 1.5rem;
+        align-items: center;
+        padding: 0 5%;
         height: 100svh;
         min-height: unset;
         overflow: hidden;
         box-sizing: border-box;
     }
     .hero-content {
-        margin-bottom: 0;
-        padding: 1.25rem;
+        text-align: center;
         width: 100%;
+        max-width: 100%;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 2.5rem 1.5rem;
+        z-index: 30;
+        background: rgba(42, 27, 45, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
     }
-    .hero-subtitle { font-size: 1rem; margin-bottom: 0.5rem; }
-    .hero-title { font-size: 2.4rem; margin-bottom: 1rem; }
-    .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.5; }
-    .btn { padding: 0.9rem 2rem; font-size: 0.8rem; }
+    .hero-subtitle { font-size: 1.1rem; margin-bottom: 0.75rem; }
+    .hero-title { font-size: 2.6rem; margin-bottom: 1.25rem; }
+    .hero-desc { font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.6; }
+    .btn { padding: 1rem 2.5rem; font-size: 0.85rem; }
     #main-site { scroll-padding-top: 60px; }
 
     .feat-row, .feat-row.reverse { flex-direction: column; text-align: center; gap: 3rem; }
