@@ -26,4 +26,4 @@ npm run build
 
 ---
 
-Projekt i wykonanie: **[Mikołaj Sitek](https://sitekmikolaj.pl)** · [sitekmikolaj01@gmail.com](mailto:sitekmikolaj01@gmail.com)
+Projekt i wykonanie: **Mikołaj Sitek** · [sitekmikolaj.pl](https://sitekmikolaj.pl) · [sitekmikolaj01@gmail.com](mailto:sitekmikolaj01@gmail.com)
