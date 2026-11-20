@@ -23,3 +23,7 @@ npm i
 npm run dev
 npm run build
 ```
+
+---
+
+Projekt i wykonanie: **Mikołaj Sitek**, [SWN Development](https://swndevelopment.pl) · [mikolaj@swndevelopment.pl](mailto:mikolaj@swndevelopment.pl)
